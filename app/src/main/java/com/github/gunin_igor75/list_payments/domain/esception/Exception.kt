@@ -11,11 +11,7 @@ open class AppException: RuntimeException{
 class ConnectionException(cause: Throwable): AppException(cause = cause)
 
 open class BackendException(
-    val code: Int,
     message: String
 ): AppException(message = message)
 
-class ParseBackendResponseException(
-    cause: Throwable
-): AppException(cause = cause)
 

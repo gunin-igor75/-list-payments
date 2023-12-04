@@ -1,12 +1,14 @@
 package com.github.gunin_igor75.list_payments.domain.repository
 
-import com.github.gunin_igor75.list_payments.domain.entity.Payment
+import com.github.gunin_igor75.list_payments.domain.entity.PaymentsState
+import com.github.gunin_igor75.list_payments.domain.entity.SignInState
+import kotlinx.coroutines.flow.StateFlow
 
 interface PaymentRepository {
 
-    suspend fun signIn(login: String, password: String): String
+    fun signIn(login: String, password: String): StateFlow<SignInState>
 
-    suspend fun loadPayments(): List<Payment>
+    fun loadPayments(): StateFlow<PaymentsState>
 
-    fun logOut()
+    suspend fun logOut()
 }

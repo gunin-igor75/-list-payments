@@ -26,7 +26,7 @@ class SharedPreferencesToken @Inject constructor(
 
     companion object {
         private const val NAME_SHARED_PREFERENCES = "tokenSettings"
-        private const val CURRENT_TOKEN = "tokenSettings"
+        private const val CURRENT_TOKEN = "currentToken"
     }
 
 }

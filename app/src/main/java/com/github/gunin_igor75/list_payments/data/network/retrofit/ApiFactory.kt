@@ -29,10 +29,10 @@ data class ApiFactory @Inject constructor(
     private fun createAuthorizationInterceptor(token: String?): Interceptor {
         return Interceptor { chain ->
             val newBuilder = chain.request().newBuilder()
-            newBuilder.addHeader("app-key", HEADER_APP_KEY)
-            newBuilder.addHeader("v", HEADER_V)
+            newBuilder.addHeader(APP_KEY, VALUE_APP_KEY)
+            newBuilder.addHeader(V, VALUE_V)
             if (token != null) {
-                newBuilder.addHeader("token", token)
+                newBuilder.addHeader(TOKEN, token)
             }
             return@Interceptor chain.proceed(newBuilder.build())
         }
@@ -45,8 +45,11 @@ data class ApiFactory @Inject constructor(
     }
 
     companion object {
-        private const val HEADER_APP_KEY = "12345"
-        private const val HEADER_V = "1"
+        private const val V = "v"
+        private const val APP_KEY = "app-key"
+        private const val TOKEN = "token"
+        private const val VALUE_APP_KEY = "12345"
+        private const val VALUE_V = "1"
         private const val BASE_URL = "https://easypay.world/api-test/"
     }
 }

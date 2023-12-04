@@ -9,5 +9,4 @@ class PaymentApp: Application() {
         DaggerApplicationComponent.factory()
             .create(this)
     }
-
 }
