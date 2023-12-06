@@ -32,8 +32,9 @@ class PaymentRepositoryImp @Inject constructor(
 
     private val scope = CoroutineScope(Dispatchers.IO)
 
-    private val clearField = MutableSharedFlow<SignInState>(replay = 1)
+    private val clearField = MutableSharedFlow<SignInState>()
     override fun signIn(login: String, password: String) = flow {
+        delay(2000)
         if (login.isBlank()) {
             emit(EmptyField(emptyLogin = true))
             return@flow
@@ -52,7 +53,8 @@ class PaymentRepositoryImp @Inject constructor(
             val errorData = mapper.mapResponseTokenToErrorData(responseToken)
             emit(SignInState.Unauthorized(errorData.message))
         }
-    }.catch { e ->
+    }.onStart {emit(SignInState.Loading) }
+        .catch { e ->
         emit(
             SignInState.NoConnection(
                 error = e.message ?: context.getString(R.string.no_connection)
@@ -66,7 +68,7 @@ class PaymentRepositoryImp @Inject constructor(
     )
 
     override fun loadPayments() = flow {
-        delay(1000)
+        delay(2000)
         val responsePaymentsDto = apiService.getPayments()
         if (responsePaymentsDto.success) {
             emit(

@@ -61,15 +61,24 @@ class HomeFragment : Fragment() {
         binding.btPayments.setOnClickListener {
             val currentToken = tokenSettings.getCurrentToken()
             if (currentToken == null) {
-                findNavController().navigate(R.id.action_homeFragment_to_signFragment)
+                goToSignInFragment()
             } else {
-                findNavController().navigate(R.id.action_homeFragment_to_listPaymentFragment)
+                goToLustPaymentFragment()
             }
         }
     }
 
+    private fun goToLustPaymentFragment() {
+        findNavController().navigate(R.id.action_homeFragment_to_listPaymentFragment)
+    }
+
+    private fun goToSignInFragment() {
+        findNavController().navigate(R.id.action_homeFragment_to_signFragment)
+    }
+
     private fun clickLogout() {
         binding.btLogOut.setOnClickListener {
+            goToSignInFragment()
             viewModel.logout()
         }
     }

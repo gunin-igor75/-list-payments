@@ -11,9 +11,11 @@ import javax.inject.Inject
 data class ApiFactory @Inject constructor(
     private val tokenSettings: TokenSettings
 ) {
+    private val token: String?
+        get() = tokenSettings.getCurrentToken()
 
     private val okHttpClient = OkHttpClient.Builder()
-        .addInterceptor(createAuthorizationInterceptor(tokenSettings.getCurrentToken()))
+        .addInterceptor(createAuthorizationInterceptor())
         .addInterceptor(loggingInterceptor())
         .build()
 
@@ -26,13 +28,14 @@ data class ApiFactory @Inject constructor(
 
     val apiService: ApiService = retrofit.create(ApiService::class.java)
 
-    private fun createAuthorizationInterceptor(token: String?): Interceptor {
+    private fun createAuthorizationInterceptor(): Interceptor {
         return Interceptor { chain ->
             val newBuilder = chain.request().newBuilder()
             newBuilder.addHeader(APP_KEY, VALUE_APP_KEY)
             newBuilder.addHeader(V, VALUE_V)
-            if (token != null) {
-                newBuilder.addHeader(TOKEN, token)
+            val  currentToken = token
+            if (currentToken != null) {
+                newBuilder.addHeader(TOKEN, currentToken)
             }
             return@Interceptor chain.proceed(newBuilder.build())
         }

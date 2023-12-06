@@ -12,8 +12,8 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/TextInputStyle"
             android:id="@+id/ti_login"
+            style="@style/TextInputStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/login"
@@ -34,8 +34,8 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/TextInputStyle"
             android:id="@+id/ti_password"
+            style="@style/TextInputStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium_space"

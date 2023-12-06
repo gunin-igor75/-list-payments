@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
+    android:layout_margin="@dimen/low_spase"
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:padding="@dimen/medium_space">
 
         <TextView
             android:id="@+id/tv_created"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="@dimen/medium_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:lines="1"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/medium_space"
             app:layout_constraintStart_toEndOf="@+id/ivc_payment"
             app:layout_constraintTop_toTopOf="@+id/ivc_payment"
             tools:text="@string/payment_products" />
@@ -46,8 +46,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:lines="1"
-            android:layout_marginStart="8dp"
-            android:textSize="20sp"
+            android:layout_marginStart="@dimen/medium_space"
+            android:textSize="@dimen/big_size"
             app:layout_constraintStart_toEndOf="@+id/ivc_payment"
             app:layout_constraintTop_toBottomOf="@+id/tv_title_payment"
             tools:text="@string/title_number" />

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
@@ -74,15 +75,18 @@ class SignFragment : Fragment() {
                                     if (it.emptyLogin) getString(R.string.field_is_empty) else null
                                 binding.tiPassword.error =
                                     if (it.emptyPassword) getString(R.string.field_is_empty) else null
+                                binding.pbSignIn.isVisible = false
                             }
 
                             is SignInState.NoConnection -> {
                                 showToast(R.string.connection_error)
+                                binding.pbSignIn.isVisible = false
                             }
 
                             is SignInState.Unauthorized -> {
                                 binding.tiEtPassword.text?.clear()
                                 showToast(R.string.invalid_email_or_password)
+                                binding.pbSignIn.isVisible = false
                             }
 
                             SignInState.ClearField -> {
@@ -90,6 +94,11 @@ class SignFragment : Fragment() {
                             }
 
                             is SignInState.Initialization -> {
+                                binding.pbSignIn.isVisible = false
+                            }
+
+                            SignInState.Loading -> {
+                                binding.pbSignIn.isVisible = true
                             }
                         }
                     }

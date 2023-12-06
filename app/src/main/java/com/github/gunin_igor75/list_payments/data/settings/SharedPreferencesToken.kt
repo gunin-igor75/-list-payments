@@ -1,6 +1,7 @@
-package com.github.gunin_igor75.list_payments.domain.settings
+package com.github.gunin_igor75.list_payments.data.settings
 
 import android.content.Context
+import com.github.gunin_igor75.list_payments.domain.settings.TokenSettings
 import javax.inject.Inject
 
 class SharedPreferencesToken @Inject constructor(

@@ -5,7 +5,7 @@ import com.github.gunin_igor75.list_payments.domain.usecases.LoadPaymentsUseCase
 import javax.inject.Inject
 
 class PaymentsViewModel @Inject constructor(
-    private val loadPaymentsUseCase: LoadPaymentsUseCase,
+    loadPaymentsUseCase: LoadPaymentsUseCase,
 ): ViewModel() {
     val loadPayments = loadPaymentsUseCase()
 }

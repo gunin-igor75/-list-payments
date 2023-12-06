@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/signFragment"
         android:name="com.github.gunin_igor75.list_payments.presentation.signin.SignFragment"
-        android:label="Sgn In"
+        android:label="Sign In"
         tools:layout="@layout/fragment_sign" >
         <action
             android:id="@+id/action_signFragment_to_listPaymentFragment"

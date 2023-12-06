@@ -4,7 +4,7 @@ import com.github.gunin_igor75.list_payments.data.network.retrofit.ApiFactory
 import com.github.gunin_igor75.list_payments.data.network.retrofit.ApiService
 import com.github.gunin_igor75.list_payments.data.reposotory.PaymentRepositoryImp
 import com.github.gunin_igor75.list_payments.domain.repository.PaymentRepository
-import com.github.gunin_igor75.list_payments.domain.settings.SharedPreferencesToken
+import com.github.gunin_igor75.list_payments.data.settings.SharedPreferencesToken
 import com.github.gunin_igor75.list_payments.domain.settings.TokenSettings
 import dagger.Binds
 import dagger.Module
