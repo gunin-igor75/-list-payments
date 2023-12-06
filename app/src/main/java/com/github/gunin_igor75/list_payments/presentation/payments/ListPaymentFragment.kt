@@ -84,11 +84,16 @@ class ListPaymentFragment : Fragment() {
 
                         is PaymentsState.NoConnection -> {
                             showToast(R.string.connection_error)
+                            goToHomeFragment()
                         }
                     }
                 }
             }
         }
+    }
+
+    private fun goToHomeFragment() {
+        findNavController().popBackStack(R.id.homeFragment, false)
     }
 
     private fun goSignInFragment() {

@@ -14,6 +14,7 @@ import com.github.gunin_igor75.list_payments.domain.settings.TokenSettings
 import com.github.gunin_igor75.list_payments.exstensions.mergeWith
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.catch
@@ -65,7 +66,9 @@ class PaymentRepositoryImp @Inject constructor(
         initialValue = Initialization
     )
 
+
     override fun loadPayments() = flow {
+        delay(2000)
         val responsePaymentsDto = apiService.getPayments()
         if (responsePaymentsDto.success) {
             emit(
@@ -94,7 +97,6 @@ class PaymentRepositoryImp @Inject constructor(
             started = SharingStarted.Lazily,
             initialValue = PaymentsState.Initialization
         )
-
     override suspend fun logOut() {
         tokenSettings.setCurrentToken(null)
         clearField.emit(SignInState.ClearField)
