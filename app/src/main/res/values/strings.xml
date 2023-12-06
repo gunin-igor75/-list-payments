@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">List_payments</string>
+    <string name="number_payment">Номер платежа</string>
+    <string name="payment">Платеж</string>
+    <string name="date_payment">25 ноября, вт</string>
+    <string name="payment_products">Оплата продуктов</string>
+    <string name="title_number">1835.55</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="field_is_empty">Field is empty</string>
+    <string name="invalid_email_or_password">Invalid email or password</string>
+    <string name="error_authorization">Error authorization</string>
+    <string name="connection_error">Can\'t connect to the server</string>
+    <string name="payments">Payments</string>
+    <string name="logout">Logout</string>
+    <string name="pay">pay</string>
+    <string name="no_connection">No connection</string>
 </resources>
