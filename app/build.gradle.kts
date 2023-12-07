@@ -28,16 +28,17 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
 
     buildFeatures {
         viewBinding = true
     }
+
 }
 
 dependencies {
@@ -59,6 +60,8 @@ dependencies {
 
     implementation("com.google.dagger:dagger:2.48.1")
     kapt("com.google.dagger:dagger-compiler:2.48.1")
+
+    implementation("org.assertj:assertj-core:3.24.2")
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("io.mockk:mockk:1.13.8")

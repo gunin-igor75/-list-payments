@@ -6,7 +6,7 @@ data class ResponsePaymentsDto(
     @SerializedName("success")
     val success: Boolean,
     @SerializedName("response")
-    val payments: List<PaymentDto>,
+    val payments: List<PaymentDto>?,
     @SerializedName("error")
-    val error: ErrorDto
+    val error: ErrorDto?
 )

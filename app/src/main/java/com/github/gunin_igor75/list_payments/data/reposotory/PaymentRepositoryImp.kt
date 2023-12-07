@@ -47,7 +47,8 @@ class PaymentRepositoryImp @Inject constructor(
         val accountDto = AccountDto(login, password)
         val responseToken = apiService.signIn(accountDto)
         if (responseToken.success) {
-            val token = responseToken.response.token
+            val token = responseToken.response?.token
+                ?: throw IllegalStateException("Response success token is null")
             tokenSettings.setCurrentToken(token)
             emit(SignInState.Authorization)
         } else {

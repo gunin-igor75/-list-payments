@@ -6,7 +6,7 @@ data class ResponseTokenDto(
     @SerializedName("success")
     val success: Boolean,
     @SerializedName("response")
-    val response: TokenDto,
+    val response: TokenDto?,
     @SerializedName("error")
-    val error: ErrorDto
+    val error: ErrorDto?
 )
