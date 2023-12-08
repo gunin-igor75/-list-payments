@@ -4,12 +4,14 @@ import com.github.gunin_igor75.list_payments.data.network.dto.ErrorDto
 import com.github.gunin_igor75.list_payments.data.network.dto.PaymentDto
 import com.github.gunin_igor75.list_payments.data.network.dto.ResponsePaymentsDto
 import com.github.gunin_igor75.list_payments.data.network.dto.ResponseTokenDto
+import com.github.gunin_igor75.list_payments.data.network.dto.TokenDto
 import com.github.gunin_igor75.list_payments.domain.entity.ErrorData
 import com.github.gunin_igor75.list_payments.domain.entity.Payment
 import java.math.BigDecimal
 
 const val TOKEN = "7b7c0a690bee2e8d90512ed1b57e19f0"
-
+const val MESSAGE_ERROR_SERVER = "Can\'t connect to the server"
+const val EMPTY_STRING = ""
 fun getPaymentListDto(): List<PaymentDto> {
     return listOf(
         PaymentDto(
@@ -113,11 +115,25 @@ fun getErrorDto(): ErrorDto {
     )
 }
 
-fun getResponseTokenDto(): ResponseTokenDto {
+fun getResponseTokenDtoError(): ResponseTokenDto {
     return ResponseTokenDto(
         success = false,
         response = null,
         error = getErrorDto()
+    )
+}
+
+fun getTokenDto(): TokenDto {
+    return TokenDto(
+        token = "token"
+    )
+}
+
+fun getResponseTokenDto(): ResponseTokenDto {
+    return ResponseTokenDto(
+        success = true,
+        response = getTokenDto(),
+        error = null
     )
 }
 
@@ -137,6 +153,14 @@ fun getErrorData(): ErrorData {
 }
 
 fun getResponsePaymentsDto(): ResponsePaymentsDto {
+    return ResponsePaymentsDto(
+        success = true,
+        payments = getPaymentListDto(),
+        error = getErrorDto()
+    )
+}
+
+fun getResponsePaymentsDtoErrorData(): ResponsePaymentsDto {
     return ResponsePaymentsDto(
         success = false,
         payments = null,

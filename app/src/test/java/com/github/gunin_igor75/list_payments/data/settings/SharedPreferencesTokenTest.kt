@@ -31,7 +31,7 @@ class SharedPreferencesTokenTest {
 
     private val currentToken = "currentToken"
     @Before
-    fun init() {
+    fun setup() {
         every {
             appContext.getSharedPreferences(any(), any())
         } returns sharedPreferences

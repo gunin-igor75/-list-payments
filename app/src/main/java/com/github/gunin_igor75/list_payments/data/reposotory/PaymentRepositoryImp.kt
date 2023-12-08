@@ -48,7 +48,7 @@ class PaymentRepositoryImp @Inject constructor(
         val responseToken = apiService.signIn(accountDto)
         if (responseToken.success) {
             val token = responseToken.response?.token
-                ?: throw IllegalStateException("Response success token is null")
+                ?: throw IllegalStateException(context.getString(R.string.connection_error))
             tokenSettings.setCurrentToken(token)
             emit(SignInState.Authorization)
         } else {
@@ -59,7 +59,7 @@ class PaymentRepositoryImp @Inject constructor(
         .catch { e ->
             val message = e.message ?: context.getString(R.string.connection_error)
             emit(
-                SignInState.NoConnection(
+                SignInState.ErrorBackend(
                     error = message
                 )
             )
@@ -76,7 +76,7 @@ class PaymentRepositoryImp @Inject constructor(
         val responsePaymentsDto = apiService.getPayments()
         if (responsePaymentsDto.success) {
             emit(
-                PaymentsState.PaymentsListState(
+                PaymentsState.Content(
                     payments = mapper.mapResponsePaymentsDtoToPayments(responsePaymentsDto)
                 )
             )
@@ -96,7 +96,7 @@ class PaymentRepositoryImp @Inject constructor(
         .catch { e ->
             val message = e.message ?: context.getString(R.string.connection_error)
             emit(
-                PaymentsState.NoConnection(
+                PaymentsState.ErrorBackend(
                     error = message
                 )
             )

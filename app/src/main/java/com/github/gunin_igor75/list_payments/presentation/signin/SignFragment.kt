@@ -78,7 +78,7 @@ class SignFragment : Fragment() {
                                 binding.pbSignIn.isVisible = false
                             }
 
-                            is SignInState.NoConnection -> {
+                            is SignInState.ErrorBackend -> {
                                 showToast(R.string.connection_error)
                                 binding.pbSignIn.isVisible = false
                             }

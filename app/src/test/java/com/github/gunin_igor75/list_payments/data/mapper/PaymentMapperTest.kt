@@ -6,9 +6,9 @@ import com.github.gunin_igor75.list_payments.util.getErrorData
 import com.github.gunin_igor75.list_payments.util.getErrorDto
 import com.github.gunin_igor75.list_payments.util.getListPayment
 import com.github.gunin_igor75.list_payments.util.getPaymentListDto
-import com.github.gunin_igor75.list_payments.util.getResponsePaymentsDto
+import com.github.gunin_igor75.list_payments.util.getResponsePaymentsDtoErrorData
 import com.github.gunin_igor75.list_payments.util.getResponsePaymentsDtoErrorDataNull
-import com.github.gunin_igor75.list_payments.util.getResponseTokenDto
+import com.github.gunin_igor75.list_payments.util.getResponseTokenDtoError
 import com.github.gunin_igor75.list_payments.util.getResponseTokenDtoErrorDataNull
 import io.mockk.every
 import io.mockk.mockkStatic
@@ -54,7 +54,7 @@ class PaymentMapperTest {
 
     @Test
     fun mapResponseTokenToErrorDataTestPositive() {
-        val responseTokenDto = getResponseTokenDto()
+        val responseTokenDto = getResponseTokenDtoError()
         val expected = getErrorData()
         val actual = mapper.mapResponseTokenToErrorData(responseTokenDto)
         assertThat(actual).isEqualTo(expected)
@@ -70,7 +70,7 @@ class PaymentMapperTest {
 
     @Test
     fun mapResponsePaymentsDtoToErrorDataTestPositive() {
-        val responsePaymentsDto = getResponsePaymentsDto()
+        val responsePaymentsDto = getResponsePaymentsDtoErrorData()
         val expected = getErrorData()
         val actual = mapper.mapResponsePaymentsDtoToErrorData(responsePaymentsDto)
         assertThat(actual).isEqualTo(expected)

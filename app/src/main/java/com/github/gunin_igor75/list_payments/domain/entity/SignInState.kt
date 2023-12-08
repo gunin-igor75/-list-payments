@@ -12,7 +12,7 @@ sealed class SignInState{
         val emptyLogin: Boolean = false,
         val emptyPassword: Boolean = false
     ): SignInState()
-    data class NoConnection(
+    data class ErrorBackend(
         val error: String
     ): SignInState()
 
