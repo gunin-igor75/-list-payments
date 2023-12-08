@@ -8,6 +8,8 @@ import com.github.gunin_igor75.list_payments.domain.entity.ErrorData
 import com.github.gunin_igor75.list_payments.domain.entity.Payment
 import java.math.BigDecimal
 
+const val TOKEN = "7b7c0a690bee2e8d90512ed1b57e19f0"
+
 fun getPaymentListDto(): List<PaymentDto> {
     return listOf(
         PaymentDto(
