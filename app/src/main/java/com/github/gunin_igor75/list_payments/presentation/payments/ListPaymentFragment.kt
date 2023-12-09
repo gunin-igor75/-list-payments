@@ -71,7 +71,7 @@ class ListPaymentFragment : Fragment() {
                             binding.pbLoading.isVisible = true
                         }
 
-                        is PaymentsState.PaymentsListState -> {
+                        is PaymentsState.Content -> {
                             binding.pbLoading.isVisible = false
                             adapterPayment.submitList(it.payments)
                         }
@@ -82,7 +82,7 @@ class ListPaymentFragment : Fragment() {
                             goSignInFragment()
                         }
 
-                        is PaymentsState.NoConnection -> {
+                        is PaymentsState.ErrorBackend -> {
                             showToast(R.string.connection_error)
                             goToHomeFragment()
                         }

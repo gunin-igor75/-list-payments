@@ -1,5 +1,6 @@
 package com.github.gunin_igor75.list_payments.data.mapper
 
+import android.util.Log
 import com.github.gunin_igor75.list_payments.data.network.dto.PaymentDto
 import com.github.gunin_igor75.list_payments.data.network.dto.ResponsePaymentsDto
 import com.github.gunin_igor75.list_payments.data.network.dto.ResponseTokenDto
@@ -15,6 +16,10 @@ import javax.inject.Inject
 class PaymentMapper @Inject constructor() {
     fun mapResponsePaymentsDtoToPayments(responsePaymentsDto: ResponsePaymentsDto): List<Payment> {
         val paymentDtos = responsePaymentsDto.payments
+        if (paymentDtos == null) {
+            Log.d(TAG, "responsePaymentsDto.payments is null")
+            return emptyList()
+        }
         return paymentDtos.map {
             mapPaymentDtoToPayment(it)
         }
@@ -22,6 +27,7 @@ class PaymentMapper @Inject constructor() {
 
     fun mapResponseTokenToErrorData(responseTokenDto: ResponseTokenDto): ErrorData {
         val error = responseTokenDto.error
+            ?: throw IllegalStateException("Response no success error is null")
         return ErrorData(
             message = error.errorMsg
         )
@@ -29,10 +35,12 @@ class PaymentMapper @Inject constructor() {
 
     fun mapResponsePaymentsDtoToErrorData(paymentsDto: ResponsePaymentsDto): ErrorData {
         val error = paymentsDto.error
+            ?: throw IllegalStateException("Response no success error is null")
         return ErrorData(
             message = error.errorMsg
         )
     }
+
     private fun mapPaymentDtoToPayment(paymentDto: PaymentDto): Payment {
         return Payment(
             id = paymentDto.id,
@@ -43,7 +51,7 @@ class PaymentMapper @Inject constructor() {
     }
 
     private fun convertorStringToNumber(s: String?): BigDecimal {
-        val temp = s?.toBigDecimalOrNull()?: BigDecimal.ZERO
+        val temp = s?.toBigDecimalOrNull() ?: BigDecimal.ZERO
         return temp.setScale(2)
     }
 
@@ -54,5 +62,9 @@ class PaymentMapper @Inject constructor() {
         val formatter = SimpleDateFormat(pattern, Locale.getDefault())
         formatter.timeZone = TimeZone.getDefault()
         return formatter.format(currentDate)
+    }
+
+    companion object {
+        private const val TAG = "PaymentMapper"
     }
 }
