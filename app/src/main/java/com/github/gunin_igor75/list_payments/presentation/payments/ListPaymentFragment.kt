@@ -1,6 +1,5 @@
 package com.github.gunin_igor75.list_payments.presentation.payments
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,44 +7,32 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.github.gunin_igor75.list_payments.PaymentApp
 import com.github.gunin_igor75.list_payments.R
 import com.github.gunin_igor75.list_payments.databinding.FragmentListPaymentsBinding
 import com.github.gunin_igor75.list_payments.domain.entity.PaymentsState
-import com.github.gunin_igor75.list_payments.presentation.ViewModelFactory
 import com.github.gunin_igor75.list_payments.presentation.adapter.PaymentAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class ListPaymentFragment : Fragment() {
-
-    private val component by lazy {
-        (requireActivity().application as PaymentApp).component
-    }
 
     private var _binding: FragmentListPaymentsBinding? = null
     private val binding
         get() = _binding ?: throw IllegalStateException("FragmentListPaymentsBinding is null")
 
+    private val viewModel by viewModels<PaymentsViewModel>()
+
     @Inject
     lateinit var adapterPayment: PaymentAdapter
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
-
-    private val viewModel by lazy {
-        ViewModelProvider(this, viewModelFactory)[PaymentsViewModel::class.java]
-    }
-    override fun onAttach(context: Context) {
-        component.inject(this)
-        super.onAttach(context)
-    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -99,12 +86,14 @@ class ListPaymentFragment : Fragment() {
     private fun goSignInFragment() {
         findNavController().popBackStack(R.id.signFragment, false)
     }
+
     private fun setupRecyclerView() {
         val recyclerView = binding.rvPayment
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.animation = null
         recyclerView.adapter = adapterPayment
     }
+
     private fun showToast(idString: Int) {
         Toast.makeText(
             requireContext(),

@@ -1,12 +1,7 @@
 package com.github.gunin_igor75.list_payments
 
 import android.app.Application
-import com.github.gunin_igor75.list_payments.di.DaggerApplicationComponent
+import dagger.hilt.android.HiltAndroidApp
 
-class PaymentApp: Application() {
-
-    val component by lazy {
-        DaggerApplicationComponent.factory()
-            .create(this)
-    }
-}
+@HiltAndroidApp
+class PaymentApp: Application()
