@@ -22,7 +22,7 @@ class PaymentMapperTest {
     private val mapper = PaymentMapper()
 
     @Before
-    fun mockkLg() {
+    fun mockkLog() {
         mockkStatic(Log::class)
         every { Log.d(any(), any()) } returns 0
     }

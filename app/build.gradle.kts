@@ -70,7 +70,8 @@ dependencies {
     testImplementation("androidx.arch.core:core-testing:2.2.0")
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.3")
     testImplementation ("app.cash.turbine:turbine:1.0.0")
-
+    testImplementation ("com.google.dagger:hilt-android-testing:2.49")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.49")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
