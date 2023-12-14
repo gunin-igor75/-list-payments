@@ -53,7 +53,6 @@ class SignFragment : Fragment() {
                             is SignInState.Authorization -> {
                                 goToListPaymentFragment()
                             }
-
                             is SignInState.EmptyField -> {
                                 binding.tiLogin.error =
                                     if (it.emptyLogin) getString(R.string.field_is_empty) else null
@@ -68,8 +67,8 @@ class SignFragment : Fragment() {
                             }
 
                             is SignInState.Unauthorized -> {
-                                binding.tiEtPassword.text?.clear()
                                 showToast(R.string.invalid_email_or_password)
+                                binding.tiEtPassword.text?.clear()
                                 binding.pbSignIn.isVisible = false
                             }
 

@@ -1,6 +1,5 @@
 package com.github.gunin_igor75.list_payments.presentation.home
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,10 +25,6 @@ class HomeFragment : Fragment() {
     @Inject
     lateinit var tokenSettings: TokenSettings
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -50,6 +45,7 @@ class HomeFragment : Fragment() {
         binding.btPayments.setOnClickListener {
             val currentToken = tokenSettings.getCurrentToken()
             if (currentToken == null) {
+
                 goToSignInFragment()
             } else {
                 goToLustPaymentFragment()

@@ -7,3 +7,13 @@ plugins {
     id("com.google.dagger.hilt.android") version "2.49" apply false
 }
 
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies{
+        classpath("androidx.navigation.safeargs:androidx.navigation.safeargs.gradle.plugin:2.7.5")
+    }
+}

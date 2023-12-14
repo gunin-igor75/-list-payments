@@ -18,7 +18,7 @@ class PaymentsViewModelTest: ViewModelTest(){
 
     @Test
     fun loadPaymentsPositiveTest() {
-        viewModel.loadPayments
+        viewModel.loadPayments()
 
         verify(exactly = 1) {
             loadPaymentsUseCase()

@@ -48,7 +48,7 @@ class ListPaymentFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.RESUMED) {
-                viewModel.loadPayments.collect {
+                viewModel.loadPayments().collect() {
                     when (it) {
                         is PaymentsState.Initialization -> {
                             binding.pbLoading.isVisible = false
