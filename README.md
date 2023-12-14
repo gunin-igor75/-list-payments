@@ -9,7 +9,7 @@
 В проекте применены следующие технолонии
 - kotlin
 - retrofit
-- coroutine
-- flow
+- coroutine, flow
 - jetpack navigation
-- dagger2
+- hilt
+- junit, mockk, espresso, robolectric
