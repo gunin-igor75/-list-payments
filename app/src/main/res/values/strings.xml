@@ -11,7 +11,7 @@
     <string name="field_is_empty">Field is empty</string>
     <string name="invalid_email_or_password">Invalid email or password</string>
     <string name="error_authorization">Error authorization</string>
-    <string name="connection_error">Can\'t connect to the server</string>
+    <string name="connection_error">Cannot connect to the server</string>
     <string name="payments">Payments</string>
     <string name="logout">Logout</string>
     <string name="pay">pay</string>

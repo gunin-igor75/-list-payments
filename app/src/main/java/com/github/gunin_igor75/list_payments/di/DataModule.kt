@@ -2,28 +2,27 @@ package com.github.gunin_igor75.list_payments.di
 
 import com.github.gunin_igor75.list_payments.data.network.retrofit.ApiFactory
 import com.github.gunin_igor75.list_payments.data.network.retrofit.ApiService
-import com.github.gunin_igor75.list_payments.data.reposotory.PaymentRepositoryImp
-import com.github.gunin_igor75.list_payments.domain.repository.PaymentRepository
 import com.github.gunin_igor75.list_payments.data.settings.SharedPreferencesToken
 import com.github.gunin_igor75.list_payments.domain.settings.TokenSettings
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 @Module
+@InstallIn(SingletonComponent::class)
 interface DataModule {
 
-    @ApplicationScope
     @Binds
+    @Singleton
     fun bindTokenSettings(impl: SharedPreferencesToken): TokenSettings
 
-    @ApplicationScope
-    @Binds
-    fun bindPaymentRepository(impl: PaymentRepositoryImp): PaymentRepository
+    companion object{
 
-    companion object {
-        @ApplicationScope
         @Provides
+        @Singleton
         fun provideApiService(apiFactory: ApiFactory): ApiService {
             return apiFactory.apiService
         }

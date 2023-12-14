@@ -13,6 +13,7 @@ import com.github.gunin_igor75.list_payments.domain.entity.SignInState.Initializ
 import com.github.gunin_igor75.list_payments.domain.repository.PaymentRepository
 import com.github.gunin_igor75.list_payments.domain.settings.TokenSettings
 import com.github.gunin_igor75.list_payments.exstensions.mergeWith
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -29,7 +30,7 @@ class PaymentRepositoryImp @Inject constructor(
     private val tokenSettings: TokenSettings,
     private val mapper: PaymentMapper,
     private val apiService: ApiService,
-    private val context: Context
+    @ApplicationContext private val context: Context
 ) : PaymentRepository {
 
     private val scope = CoroutineScope(Dispatchers.IO)

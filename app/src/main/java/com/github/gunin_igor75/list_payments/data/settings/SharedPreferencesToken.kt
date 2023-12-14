@@ -2,10 +2,11 @@ package com.github.gunin_igor75.list_payments.data.settings
 
 import android.content.Context
 import com.github.gunin_igor75.list_payments.domain.settings.TokenSettings
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 class SharedPreferencesToken @Inject constructor(
-    appContext: Context
+    @ApplicationContext appContext: Context
 ) : TokenSettings {
 
     private val sharedPreferences =
